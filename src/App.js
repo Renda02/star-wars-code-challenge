@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import { MainPage } from './components/MainPage';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello there!</h1>
-      <button onClick={() => (alert("Hello world!"))} data-cy="btn-hello">Click me!</button>
+    <div >
+        <MainPage />
     </div>
   );
 }
