@@ -2,7 +2,7 @@
 
 *TODO: [ADD_TASK_REQUIREMENTS_HERE]*
 
-Solution by [Sophie Lewis](mailto:sophie@codewithdragos.com)
+Solution by [Rendani Luvhengo](mailto:rluvhengo2@gmail.com)
 
 ## Assumptions
 
