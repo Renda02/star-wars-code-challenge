@@ -14,8 +14,6 @@ export const NavBar = () => {
 }
 
 
-
-
 const Nav = styled.nav`
   width: 100%;
   background: #3D0478;
@@ -28,11 +26,6 @@ const Content = styled.div`
   display: flex;
   margin-left: 1.4em;  justify-content: center;
   align-items: center;
-  @media (max-width: 920px) {
-    display: flex;
-    
-    align-items: center;
-  }
 `;
 
 const NavTitle = styled.h2`

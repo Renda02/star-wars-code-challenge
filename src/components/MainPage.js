@@ -53,11 +53,11 @@ export const MainPage = () => {
           }}/>
         <Button onClick={getCharacters}>Search</Button>
       </InputWrapper>
-      <React.Fragment>
+      <Row>
         {listCharacters.map((character) => {
           return <Card character={character}></Card>;
         })}
-      </React.Fragment>    <InputWrapper>
+      </Row>    <InputWrapper>
       <Button onClick={moreCharacters}>Load More</Button>    </InputWrapper>
     </CardContainer>
   );
@@ -76,7 +76,6 @@ const InputWrapper = styled.div`
 display:flex;
 justify-content: center;
 align-items:center;
-
 `;
 
 const Input = styled.input`
@@ -106,6 +105,19 @@ cursor:pointer;
     background: #fff;
     color:#3D0478;
     border: 1px solid #3D0478
+  }
+`;
+
+const Row = styled.div`
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 920px) {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-gap: 10px;
   }
 `;
 
