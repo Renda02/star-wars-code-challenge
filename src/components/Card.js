@@ -1,15 +1,18 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import React from "react";
 
 export const Card = ({ character }) => {
+  const id = character.url.split("/")[5];
   return (
     <CardContainer>
       <Cards>
-        {" "}
-        <Title>{character.name}</Title>
-        <Text>Height: {character.height} cm</Text>
-        <Text>Birth of year: {character.birth_year}</Text>
-        <Text>{character.films.length} films</Text>
+        <Link to={`/character/${id}`}>
+          <Title>{character.name}</Title>
+          <Text>Height: {character.height} cm</Text>
+          <Text>Birth of year: {character.birth_year}</Text>
+          <Text>{character.films.length} films</Text>
+        </Link>
       </Cards>
     </CardContainer>
   );
@@ -17,7 +20,7 @@ export const Card = ({ character }) => {
 
 const CardContainer = styled.div`
   max-width: 1200px;
-margin-top:2em;
+  margin: 2em 0;
 `;
 
 const Cards = styled.div`
