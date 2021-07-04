@@ -1,13 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
 import { MainPage } from './components/MainPage';
 
 function App() {
   return (
-    <div >
+    <MainWrapper >
         <MainPage />
-    </div>
+    </MainWrapper>
   );
 }
 
 export default App;
+
+
+const MainWrapper = styled.div`
+margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background:#3D0478;
+  color:#FFFFFF`
