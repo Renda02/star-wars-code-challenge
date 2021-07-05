@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+
 import React from "react";
 
 export const Card = ({ character }) => {
-  const id = character.url.split("/")[5];
+  
   return (
     <CardContainer>
       <Cards>
-        <Link to={`/character/${id}`}>
+   
           <Title>{character.name}</Title>
           <Text>Height: {character.height} cm</Text>
           <Text>Birth of year: {character.birth_year}</Text>
           <Text>{character.films.length} films</Text>
-        </Link>
+       
       </Cards>
     </CardContainer>
   );

@@ -6,6 +6,7 @@ export const MainPage = () => {
   const [listCharacters, setListCharacter] = useState([]);
   const [searchCharacter, setSearchCharacter] = useState("");
   const [nextUrl, setNextUrl] = useState("");
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     fetch("https://swapi.dev/api/people/")
@@ -26,6 +27,7 @@ export const MainPage = () => {
       })
       .then(function (data) {
         setListCharacter(data.results);
+        setHistory([...history, { searchCharacter, data }]);
         setNextUrl(data.next);
       });
   }
@@ -47,18 +49,37 @@ export const MainPage = () => {
     <CardContainer>
       <InputWrapper>
         <Input
-        type="text" required placeholder="Search Character"
+          type="text"
+          required
+          placeholder="Search Character"
           onChange={(event) => {
             setSearchCharacter(event.target.value);
-          }}/>
+          }}
+        />
         <Button onClick={getCharacters}>Search</Button>
       </InputWrapper>
+      <History>
+        <RecentSearch>Recent search: </RecentSearch>
+        {history.map((item) => {
+          return (
+            <RecentSearchButton
+              onClick={() => {
+                setListCharacter(item.data.results);
+              }}
+            >
+              {item.searchCharacter}
+            </RecentSearchButton>
+          );
+        })}
+      </History>
       <Row>
         {listCharacters.map((character) => {
           return <Card character={character}></Card>;
         })}
-      </Row>    <InputWrapper>
-      <Button onClick={moreCharacters}>Load More</Button>    </InputWrapper>
+      </Row>{" "}
+      <InputWrapper>
+        <Button onClick={moreCharacters}>Load More</Button>{" "}
+      </InputWrapper>
     </CardContainer>
   );
 };
@@ -73,38 +94,70 @@ const CardContainer = styled.div`
 `;
 
 const InputWrapper = styled.div`
-display:flex;
-justify-content: center;
-align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const RecentSearch = styled.span`
+  color: #3d0478;
+`;
+
+const History = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2em;
 `;
 
 const Input = styled.input`
-margin-right:0.5em;
-font-family:inherit;
-text-align:inherit;
-padding:0.5em;
-width: 40%;
-border: 1px solid #3D0478;
-border-radius: 3px;
+  margin-right: 0.5em;
+  font-family: inherit;
+  text-align: inherit;
+  padding: 0.5em;
+  width: 40%;
+  border: 1px solid #3d0478;
+  border-radius: 3px;
 `;
 
 const Button = styled.button`
-display:inline-block;
-padding: 0.5em 1em;
-border-radius: 5px;
-text-transform: uppercase;
-font-weight: 500;
-background:#3D0478;
-color:#fff;
-border:0;
-letter-spacing:0.5px;
-cursor:pointer;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: #3d0478;
+  color: #fff;
+  border: 0;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 
-&:hover,
-:active{
+  &:hover,
+  :active {
     background: #fff;
-    color:#3D0478;
-    border: 1px solid #3D0478
+    color: #3d0478;
+    border: 1px solid #3d0478;
+  }
+`;
+
+const RecentSearchButton = styled.button`
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: #fff;
+  color: #3d0478;
+  border: 0;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border: 1px solid #3d0478;
+
+  &:hover,
+  :active {
+    background: #3d0478;
+    color: #fff;
+    border: 1px solid #3d0478;
   }
 `;
 
@@ -120,5 +173,3 @@ const Row = styled.div`
     grid-gap: 10px;
   }
 `;
-
-
