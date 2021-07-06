@@ -1,12 +1,24 @@
-## PROJECT_NAME
+## Star wars code challenge
 
-*TODO: [ADD_TASK_REQUIREMENTS_HERE]*
+- The task for the star wars code challenge is to create a responsiveness SPA query to [swapi/dev](https://swapi.dev/)
+
+*TODO: 
+- create search input where an user can look for his favourite Star Wars character by its
+name.
+- the information related to the character should be displayed in
+the best possible way.
+- a list of recent searches, where the user can click and review again the characters
+he searched previously without performing any additional AJAX requests.
 
 Solution by [Rendani Luvhengo](mailto:rluvhengo2@gmail.com)
 
 ## Assumptions
 
-*TODO: [ASSUMPTIONS_MADE_HERE]*
+*TODO: 
+-
+-
+-
+-
 
 ## Proposed Solution
 
