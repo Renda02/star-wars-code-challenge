@@ -10,8 +10,8 @@ the best possible way.
 - a list of recent searches, where the user can click and review again the characters
 he searched previously without performing any additional AJAX requests.
 
-Solution by [Rendani Luvhengo](mailto:rluvhengo2@gmail.com)
- Demo 
+Solution by [Rendani Luvhengo](mailto:rluvhengo2@gmail.com) and
+ [Demo](https://star-wars-code-challenge.netlify.app/)
 
 ## Proposed Solution
 
