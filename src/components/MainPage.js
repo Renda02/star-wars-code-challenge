@@ -8,18 +8,37 @@ export const MainPage = () => {
   const [nextUrl, setNextUrl] = useState("");
   const [history, setHistory] = useState([]);
 
+  // useEffect(() => {
+  //   fetch("https://swapi.dev/api/people/")
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (data) {
+  //       setListCharacter(data.results);
+  //       setNextUrl(data.next);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch("https://swapi.dev/api/people/")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        setListCharacter(data.results);
-        setNextUrl(data.next);
-      });
+    async function fetchData() {
+      // 1. get the data
+      const response = await fetch(
+        "https://swapi.dev/api/people/"
+      );
+      // 2. prepare the data
+      const data = await response.json();
+
+      // 3. update the value of the state
+      setListCharacter(data.results);
+      setNextUrl(data.next);
+    }
+
+    fetchData();
+    // fetch data
+    // set the events
   }, []);
 
-  //searching Ccharacters
+  //searching Characters
   function getCharacters() {
     fetch(`https://swapi.dev/api/people/?search=${searchCharacter}`)
       .then(function (response) {
@@ -40,7 +59,6 @@ export const MainPage = () => {
       })
       .then(function (data) {
         setListCharacter([...listCharacters, ...data.results]);
-
         setNextUrl(data.next);
       });
   }
